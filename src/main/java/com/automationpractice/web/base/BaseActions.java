@@ -2,12 +2,10 @@ package com.automationpractice.web.base;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.InvalidElementStateException;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -30,24 +28,13 @@ public class BaseActions {
         }
     }
 
-    protected void selectIndexInDropDown(WebElement element, int index) {
-        try {
-            clickOn(element);
-            Select objSelect = new Select(element);
-            objSelect.selectByIndex(index);
-        } catch (NoSuchElementException e) {
-            System.out.println("NoSuchElementException on selecting index" + index + " for element " + element);
-            System.out.println(e.getMessage());
-        }
-    }
-
     protected void goToWeb(String url) {
         driver.get(url);
         String message = "Landing to Web Page: " + url;
         System.out.println(message);
     }
 
-    protected void moveToElement(WebElement element){
+    protected void moveToElement(WebElement element) {
         Actions actions = new Actions(driver);
         actions.moveToElement(element);
         actions.perform();
