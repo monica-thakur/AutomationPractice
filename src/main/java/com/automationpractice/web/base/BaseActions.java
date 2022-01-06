@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import static org.testng.Assert.fail;
+
 public class BaseActions {
 
     WebDriver driver;
@@ -56,6 +58,14 @@ public class BaseActions {
         System.out.println(message);
     }
 
+    @Step
+    protected String getPageTitle() {
+        String  title = driver.getTitle();
+        String message = "Page title is : " + title;
+        System.out.println(message);
+        return title;
+    }
+
     protected void checkIfPageTitleContains(String pageTitle, String expected) {
         String message = "CHECK_IF" + pageTitle + "CONTAINS" + expected;
         System.out.println(message);
@@ -78,5 +88,18 @@ public class BaseActions {
         Assert.assertEquals(element.getText(), expected);
         String message = "Text is expected: " + expected;
         System.out.println(message);
+    }
+
+    protected boolean checkIfUrlContains(String expected) {
+        String currentUrl = driver.getCurrentUrl();
+        try {
+            Assert.assertTrue(currentUrl.contains(expected));
+            String message = "Current URL: " + currentUrl + " is the same as " + expected;
+            System.out.println(message);
+            return true;
+        } catch (Exception e) {
+            fail("Current URL: " + currentUrl + " is not the same as " + expected);
+            return false;
+        }
     }
 }
