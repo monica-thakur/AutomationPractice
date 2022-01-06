@@ -18,9 +18,6 @@ public class ProductCataloguePage extends BasePage {
     @FindBy(xpath = "//div[@class='columns-container']//li[1]//span[1]")
     WebElement summaryTextHeader;
 
-    @FindBy(xpath = "//button[@id='SubmitLogin']//span")
-    WebElement signInButton;
-
     @FindBy(xpath = "//header/div[3]/div[1]/div[1]/div[6]/ul[1]/li[2]/a[1]")
     WebElement dressesTab;
 
@@ -59,7 +56,6 @@ public class ProductCataloguePage extends BasePage {
         waitUntilLocatorIsVisible(summaryTextHeader, 5);
         clickOn(proceedToCheckoutOnSummaryPage);
         waitUntilUrlContains("index.php?controller=authentication");
-        checkIfTextIsExpected(signInButton, "Sign in");
         checkIfPageTitleContains(getPageTitle(),"Login - My Store");
     }
 
@@ -78,10 +74,5 @@ public class ProductCataloguePage extends BasePage {
         clickOn(sampleProductAddToCartButton);
         waitUntilLocatorIsVisible(addedToCartMessageTitle, 5);
         checkIfTextIsExpected(addedToCartMessageTitle, "Product successfully added to your shopping cart");
-    }
-
-    public void verifySignInPage() {
-        checkIfTextIsExpected(signInButton, "Sign in");
-        checkIfPageTitleContains(getPageTitle(),"Login - My Store");
     }
 }

@@ -2,15 +2,18 @@ package com.automationpractice.web.stepdefinitions;
 
 import com.automationpractice.web.helper.DriverProvider;
 import com.automationpractice.web.pages.ProductCataloguePage;
+import com.automationpractice.web.pages.SignInPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 
 public class CheckoutStepDef {
 
     private final ProductCataloguePage productCataloguePage;
+    private final SignInPage signInPage;
 
     public CheckoutStepDef(){
         productCataloguePage = new ProductCataloguePage(DriverProvider.getDriver());
+        signInPage = new SignInPage(DriverProvider.getDriver());
     }
 
     @Given("^user is at products page$")
@@ -23,7 +26,7 @@ public class CheckoutStepDef {
         switch (page){
             case "sign-in":
                 //verify current url is sign in
-                productCataloguePage.verifySignInPage();
+                signInPage.verifySignInPage();
                 break;
             default:
                 throw new IllegalArgumentException("Unidentified page name");
