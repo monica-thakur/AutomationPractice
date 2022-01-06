@@ -13,8 +13,8 @@ public class CheckoutStepDef {
         productCataloguePage = new ProductCataloguePage(DriverProvider.getDriver());
     }
 
-    @Given("^user goes to products page$")
-    public void userGoesToProductsPage() {
+    @Given("^user is at products page$")
+    public void userIsAtProductsPage() {
         productCataloguePage.openProductsPage();
     }
 

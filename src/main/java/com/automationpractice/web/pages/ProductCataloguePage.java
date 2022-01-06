@@ -59,6 +59,7 @@ public class ProductCataloguePage extends BasePage {
         moveToElement(dressesTab);
         clickOn(summerDressesTab);
         waitUntilUrlContains("id_category=11&controller=category");
+
     }
 
     public void addSampleItemToCart() {
